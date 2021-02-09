@@ -1,0 +1,27 @@
+{
+  "name": "nikson.dev",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "main": "src/nikson.js",
+  "private": true,
+  "scripts": {
+    "postinstall": "husky install",
+    "beautify": "npx prettier --write src/",
+    "test": "echo 'testing!'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doomkit/nikson.dev.git"
+  },
+  "author": "Nikita Shkarupa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doomkit/nikson.dev/issues"
+  },
+  "homepage": "https://github.com/doomkit/nikson.dev#readme",
+  "devDependencies": {
+    "husky": "^5.0.9",
+    "pinst": "^2.1.4",
+    "prettier": "2.2.1"
+  }
+}
