@@ -5,8 +5,41 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const prod = process.env.NODE_ENV === 'production';
+const dev = !prod;
 const filename = (ext) => (prod ? `[name].${ext}` : `[name].[contenthash].${ext}`);
 const chunkFilename = (ext) => (prod ? `[id].${ext}` : `[id].[contenthash].${ext}`);
+
+const plugins = () => {
+    const plugins = [
+        new HTMLWebpackPlugin({
+            template: path.resolve(__dirname, 'src/index.html'),
+            filename: 'index.html',
+            minify: { collapseWhitespace: prod },
+        }),
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({
+            filename: `./${filename('css')}`,
+            chunkFilename: `./${chunkFilename('css')}`,
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, 'src/assets'),
+                    to: path.resolve(__dirname, 'dist'),
+                },
+            ],
+        }),
+    ];
+    if (prod) {
+        /** Plugins for production */
+        // TODO: optimize images
+    }
+    if (dev) {
+        /** Plugins for development */
+    }
+
+    return plugins;
+};
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
@@ -30,26 +63,7 @@ module.exports = {
             chunks: 'all',
         },
     },
-    plugins: [
-        new HTMLWebpackPlugin({
-            template: path.resolve(__dirname, 'src/index.html'),
-            filename: 'index.html',
-            minify: { collapseWhitespace: prod },
-        }),
-        new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({
-            filename: `./${filename('css')}`,
-            chunkFilename: `./${chunkFilename('css')}`,
-        }),
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: path.resolve(__dirname, 'src/assets'),
-                    to: path.resolve(__dirname, 'dist'),
-                },
-            ],
-        }),
-    ],
+    plugins: plugins(),
     devtool: prod ? false : 'source-map',
     module: {
         rules: [
@@ -77,7 +91,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(sa|sc|c)ss$/,
+                test: /\.(sa|sc)ss$/,
                 use: [
                     prod ? MiniCssExtractPlugin.loader : 'style-loader',
                     'css-loader',
