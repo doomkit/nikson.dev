@@ -1,4 +1,4 @@
-import './style.scss';
+import './styles/main.scss';
 import './index.html';
 
 function component() {
