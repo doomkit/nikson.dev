@@ -1,27 +1,50 @@
 {
-  "name": "nikson.dev",
-  "version": "1.0.0",
-  "description": "Personal website",
-  "main": "src/nikson.js",
-  "private": true,
-  "scripts": {
-    "postinstall": "husky install",
-    "beautify": "npx prettier --write src/",
-    "test": "echo 'testing!'"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/doomkit/nikson.dev.git"
-  },
-  "author": "Nikita Shkarupa",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/doomkit/nikson.dev/issues"
-  },
-  "homepage": "https://github.com/doomkit/nikson.dev#readme",
-  "devDependencies": {
-    "husky": "^5.0.9",
-    "pinst": "^2.1.4",
-    "prettier": "2.2.1"
-  }
+    "name": "nikson.dev",
+    "version": "1.0.0",
+    "description": "Personal website",
+    "main": "src/nikson.js",
+    "private": true,
+    "scripts": {
+        "postinstall": "husky install",
+        "build": "cross-env NODE_ENV=production webpack --mode production",
+        "dev": "cross-env NODE_ENV=development webpack --mode development",
+        "serve": "cross-env NODE_ENV=development webpack serve --mode development",
+        "beautify": "npx prettier --write src/",
+        "test": "echo 'testing!'"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/doomkit/nikson.dev.git"
+    },
+    "author": "Nikita Shkarupa",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/doomkit/nikson.dev/issues"
+    },
+    "homepage": "https://github.com/doomkit/nikson.dev#readme",
+    "devDependencies": {
+        "@babel/core": "^7.12.13",
+        "@babel/plugin-proposal-class-properties": "^7.12.13",
+        "@babel/preset-env": "^7.12.13",
+        "babel-loader": "^8.2.2",
+        "clean-webpack-plugin": "^3.0.0",
+        "copy-webpack-plugin": "^7.0.0",
+        "cross-env": "^7.0.3",
+        "css-loader": "^5.0.2",
+        "file-loader": "^6.2.0",
+        "html-loader": "^1.3.2",
+        "html-webpack-plugin": "^5.0.0",
+        "husky": "^5.0.9",
+        "mini-css-extract-plugin": "^1.3.6",
+        "node-sass": "^5.0.0",
+        "pinst": "^2.1.4",
+        "postcss-loader": "^5.0.0",
+        "prettier": "2.2.1",
+        "sass-loader": "^11.0.1",
+        "style-loader": "^2.0.0",
+        "webpack": "^5.21.2",
+        "webpack-cli": "^4.5.0",
+        "webpack-dev-server": "^3.11.2"
+    },
+    "dependencies": {}
 }
