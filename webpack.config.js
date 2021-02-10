@@ -1,7 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const prod = process.env.NODE_ENV === 'production';
@@ -36,6 +38,7 @@ const plugins = () => {
     }
     if (dev) {
         /** Plugins for development */
+        new webpack.SourceMapDevToolPlugin({});
     }
 
     return plugins;
@@ -62,6 +65,12 @@ module.exports = {
         splitChunks: {
             chunks: 'all',
         },
+        minimize: prod,
+        minimizer: [
+            new CssMinimizerPlugin({
+                sourceMap: dev,
+            }),
+        ],
     },
     plugins: plugins(),
     devtool: prod ? false : 'source-map',
@@ -87,7 +96,7 @@ module.exports = {
                           }
                         : 'style-loader',
                     'css-loader',
-                    'sass-loader',
+                    'postcss-loader',
                 ],
             },
             {
@@ -95,6 +104,7 @@ module.exports = {
                 use: [
                     prod ? MiniCssExtractPlugin.loader : 'style-loader',
                     'css-loader',
+                    'postcss-loader',
                     'sass-loader',
                 ],
             },

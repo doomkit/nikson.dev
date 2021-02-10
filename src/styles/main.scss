@@ -1,1 +1,10 @@
 @import 'vendor';
+
+@import '~tailwindcss/base';
+// custom base styles
+
+@import '~tailwindcss/components';
+// custom components
+
+@import '~tailwindcss/utilities';
+// custom utilities
