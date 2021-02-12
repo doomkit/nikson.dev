@@ -1,10 +1,12 @@
 import './styles/main.scss';
-import './index.html';
 
-function component() {
-    const element = document.createElement('div');
-    element.innerHTML = 'Hello world!';
-    return element;
+import header from './components/header.html';
+
+function initApp() {
+    document.body.style.backgroundColor = 'rgb(55, 65, 81)';
+    const root = document.getElementById('root');
+    root.innerHTML = header;
+    setTimeout(() => (root.style.opacity = 1), 500);
 }
 
-document.body.appendChild(component());
+setTimeout(() => initApp(), 2000);

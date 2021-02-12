@@ -4,10 +4,27 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <style>
+            body {
+                background-color: rgb(17, 24, 39);
+                transition: background-color 0.5s;
+                height: 100vh;
+                width: 100vw;
+            }
+            #preloader {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+            }
+        </style>
     </head>
-    <body class="bg-gray-800 flex items-center justify-center">
-        <div class="bg-white rounded-lg p-4 shadow mt-24">
-            <h1 class="font-bold text-gray-900">Your new tailwind css site</h1>
-        </div>
+    <body>
+        <div
+            id="root"
+            style="opacity: 0; transition: opacity 0.5s"
+            class="max-w-screen-md mx-auto px-6 py-12"
+        ></div>
     </body>
 </html>

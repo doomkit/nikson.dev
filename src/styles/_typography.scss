@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;900&display=swap');
+
+body {
+    @apply text-white;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+    @apply text-5xl font-black uppercase tracking-widest;
+
+    // Page title text shadow
+    &.miami-text {
+        text-shadow: -2px 2px 0 #49c5b6, -4px 4px 0 rgb(236, 72, 153);
+    }
+}

@@ -2,6 +2,8 @@
 
 @import '~tailwindcss/base';
 // custom base styles
+@import './base';
+@import './typography';
 
 @import '~tailwindcss/components';
 // custom components
